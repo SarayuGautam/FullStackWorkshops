@@ -1,0 +1,530 @@
+/* =========================================
+   1. Design tokens: colours and sizes used everywhere
+   ========================================= */
+:root {
+  --primary: #2b59c3;
+  --primary-dark: #1d3f8f;
+  --accent: #f4a261;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --radius: 12px;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   2. Reset and base text
+   ========================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.2rem; }
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--primary);
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+audio {
+  width: 100%;
+}
+
+/* =========================================
+   3. Header and navigation
+   ========================================= */
+.site-header {
+  background: var(--surface);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+/* =========================================
+   4. Page spacing, hero and button
+   ========================================= */
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.hero {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+/* =========================================
+   5. Cards, figures and the aside
+   ========================================= */
+.course-card,
+.resource {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.course-card img {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.course-meta {
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.resource.featured {
+  background: var(--primary);
+  color: #fff;
+}
+
+.resource.featured a {
+  color: #fff;
+}
+
+figure {
+  margin: 0 0 1.5rem;
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+aside {
+  background: var(--surface);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--accent);
+}
+
+/* =========================================
+   6. Footer
+   ========================================= */
+.site-footer {
+  background: #111827;
+  color: #d1d5db;
+  padding: 2.5rem 1.5rem 1rem;
+}
+
+.site-footer h2,
+.site-footer h3 {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.copyright {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid #374151;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* =========================================
+   7. Flexbox layouts
+   ========================================= */
+
+/* Header: logo left, nav right, both vertically centred */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Nav: links in a row instead of a vertical list */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+/* Hero: text and image side by side, wrapping on narrow screens */
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.hero-text,
+.hero img {
+  flex: 1 1 300px;
+}
+
+.hero img {
+  border-radius: var(--radius);
+}
+
+/* Course cards: a row of cards that wrap onto new lines */
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.course-card {
+  flex: 1 1 250px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push each card's link to the bottom so the links line up */
+.course-card a {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Media: video, audio and image figures side by side */
+.media-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.media-group figure {
+  flex: 1 1 280px;
+  margin: 0;
+}
+
+/* =========================================
+   8. Grid layouts
+   ========================================= */
+
+/* Page: main content on the left, sidebar on the right */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  align-items: start;
+}
+
+main {
+  min-width: 0;
+}
+/* Resources: three equal columns; the featured card spans two of them */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.resource {
+  margin-bottom: 0;
+}
+
+.resource.featured {
+  grid-column: span 2;
+}
+
+/* Footer: as many 200px+ columns as fit; copyright across the full width */
+/* Footer: three content-sized columns, spread from edge to edge */
+.site-footer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-around;
+  gap: 2rem;
+  text-align: center;
+}
+
+.copyright {
+  grid-column: 1 / -1;
+}
+
+/* =========================================
+   9. Polish: images, hover effects, sticky header
+   ========================================= */
+
+/* Images: same shape, cropped neatly instead of squashed */
+.course-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.hero img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.media-group img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Nav links: soft highlight on hover */
+.nav-links a {
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-links a:hover {
+  background-color: var(--bg);
+  color: var(--primary);
+}
+
+/* Button: darker and lifts slightly */
+.button {
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Cards: lift up with a stronger shadow */
+.course-card,
+.resource {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-card:hover,
+.resource:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Links: underline only on hover, inside cards and the footer */
+.course-card a,
+.resource a,
+.site-footer a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.course-card a:hover,
+.resource a:hover,
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Keyboard users: a clear outline on whatever is focused */
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Header stays at the top while you scroll */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* When a nav link jumps to a section, stop the header covering its heading */
+section {
+  scroll-margin-top: 90px;
+}
+
+/* People who turn on "Reduce motion" get no animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================
+   10. Responsive: tablet and mobile
+   ========================================= */
+
+/* Tablet: 900px and narrower */
+@media (max-width: 900px) {
+  /* Sidebar moves below the main content */
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* Resources: 2 columns; the featured card still spans both */
+  .resource-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile: 600px and narrower */
+@media (max-width: 600px) {
+  /* Header: logo on top, nav centred below it; it scrolls away to save space */
+  .site-header {
+    flex-direction: column;
+    position: static;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  .nav-links a {
+    padding: 0.6rem 0.8rem;
+  }
+
+  section {
+    scroll-margin-top: 0;
+  }
+
+  /* Less space around the page */
+  .layout {
+    padding: 1rem;
+  }
+
+  /* Hero: image on top, text below, full-width button */
+  .hero {
+    flex-direction: column;
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .hero-text,
+  .hero img {
+    flex: none;
+    width: 100%;
+  }
+
+  .hero img {
+    order: -1;
+  }
+
+  .button {
+    display: block;
+    text-align: center;
+  }
+
+  /* Resources: one column; the featured card must stop spanning 2 */
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource.featured {
+    grid-column: auto;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+    /* Footer: one centred column */
+  .site-footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
